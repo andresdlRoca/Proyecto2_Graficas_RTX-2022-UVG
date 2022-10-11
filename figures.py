@@ -173,8 +173,10 @@ class Triangle(object):
         
         # P = orig+self.t*dir
         P = [self.t * x for x in dir]
-        P =[orig.x + P[0], orig.y + P[1], orig.z + P[2]]
-
+        try:
+            P =[orig.x + P[0], orig.y + P[1], orig.z + P[2]]
+        except:
+            P = [orig[0] + P[0], orig[1] + P[1], orig[2] + P[2]]
         #Edge 0
         edge0 = ml.subtract(self.v1, self.v0)
         vp0 = ml.subtract(P, self.v0)

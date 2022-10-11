@@ -14,8 +14,8 @@ def matrixMult(A, B):
 
 def multiplyVectbyNum(vector, num):
     result = [0,0,0]
-    for x in vector:
-        result[int(x)] = x * num
+    for i in range(len(vector)):
+        result[i] = vector[i] * num
     return result
 
 def add(m1, m2):
