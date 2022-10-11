@@ -138,8 +138,9 @@ class Raytracer(object):
                 shadowIntensity = light.getShadowIntensity(intersect, self)
 
                 lightColor = (ml.add(diffuseColor, specColor)) * (1 - shadowIntensity)
-
-
+                # print(1-shadowIntensity)
+                # print(ml.add(diffuseColor, specColor))
+                
                 finalColor = ml.add(finalColor, lightColor)
 
         elif material.matType == REFLECTIVE:

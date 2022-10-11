@@ -163,8 +163,8 @@ class PointLight(object):
     def getShadowIntensity(self, intersect, raytracer):
         light_dir = ml.subtract(self.point, intersect.point)
         light_distance = ml.norm(light_dir)
-        # light_dir = light_dir / light_distance
-        light_dir = ml.dividevects(light_dir, light_distance)
+        light_dir = [x / light_distance for x in light_dir]
+        # light_dir = ml.dividevects(light_dir, light_distance)
 
         shadow_intensity = 0
         shadow_intersect = raytracer.scene_intersect(intersect.point, light_dir, intersect.sceneObj)

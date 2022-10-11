@@ -20,7 +20,7 @@ glass = Material(diffuse = (0.9, 0.9, 0.9), spec = 64, ior = 1.5, matType = TRAN
 kirby = Material(texture=Texture("kirby.bmp"), spec=64, ior=1.5, matType= TRANSPARENT)
 machine = Material(texture=Texture("machine.bmp"), spec=16, matType = REFLECTIVE)
 mat1 = Material(diffuse=(0.5, 0.8, 0.2), spec=64, matType=REFLECTIVE)
-headmat = Material(diffuse = (0.9,0.9,0.9), texture=Texture("head.bmp"), spec=16, matType=REFLECTIVE)
+headmat = Material(diffuse = (0.9,0.9,0.9), texture=Texture("head.bmp"), spec=64, matType=REFLECTIVE)
 
 rtx = Raytracer(width, height)
 
@@ -33,12 +33,18 @@ rtx.lights.append( DirectionalLight(direction = (0,0,-5), intensity = 0.8 ))
 # rtx.lights.append( PointLight(point = (0,0,-5)))
 # rtx.lights.append( PointLight(point = (-5,3,-7)))
 
-# rtx.scene.append( Sphere(center=(0,-2,-10), radius=2, material=kirby))
-# rtx.scene.append( Sphere(center=(-5,-2,-10), radius=3, material=headmat))
-# rtx.scene.append( Sphere(center=(5, -2, -10), radius=3, material=marble))
-# rtx.scene.append( AABB(position=(-3.5, 3, -5), size=(2, 5, 5), material=machine))
+rtx.scene.append( Sphere(center=(0,-2,-10), radius=2, material=kirby))
+rtx.scene.append( Sphere(center=(-5,-2,-10), radius=3, material=headmat))
+rtx.scene.append( Sphere(center=(-5,-2,-5), radius=1, material=headmat))
+rtx.scene.append( Sphere(center=(-5,-2,-4), radius=0.75, material=headmat))
+rtx.scene.append( Sphere(center=(5, -2, -10), radius=3, material=marble))
+rtx.scene.append( Sphere(center=(5, -2, -5), radius=1, material=marble))
+rtx.scene.append( Sphere(center=(5, -2, -4), radius=0.75, material=marble))
+rtx.scene.append( AABB(position=(-3.5, 3, -5), size=(2, 5, 5), material=machine))
 rtx.scene.append( Triangle(v0=(3,3,-15), v1=(-5, 2, -7) , v2=(-2, 5, -10), t= None, material = mirror) )
-# rtx.scene.append( Disk(position=(3, -5, -10), radius=3, normal=(0,1,0), material=grass))
+rtx.scene.append( Disk(position=(3, -5, -10), radius=3, normal=(0,1,0), material=grass))
+rtx.scene.append( Disk(position=(-3, -5, -10), radius=3, normal=(0,1,0), material=brick))
+
 
 rtx.glRender()
 
