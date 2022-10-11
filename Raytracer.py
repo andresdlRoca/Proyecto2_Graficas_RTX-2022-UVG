@@ -6,8 +6,8 @@ from figures import *
 from lights import *
 
 
-width = 512
-height = 512
+width = 1920
+height = 1080
 
 # Materiales
 
@@ -21,6 +21,8 @@ kirby = Material(texture=Texture("kirby.bmp"), spec=64, ior=1.5, matType= TRANSP
 machine = Material(texture=Texture("machine.bmp"), spec=16, matType = REFLECTIVE)
 mat1 = Material(diffuse=(0.5, 0.8, 0.2), spec=64, matType=REFLECTIVE)
 headmat = Material(diffuse = (0.9,0.9,0.9), texture=Texture("head.bmp"), spec=64, matType=REFLECTIVE)
+zero = Material(diffuse = (0.9,0.9,0.9), texture=Texture("zero.bmp"), spec=64, matType=REFLECTIVE)
+
 
 rtx = Raytracer(width, height)
 
@@ -43,7 +45,7 @@ rtx.scene.append( Sphere(center=(5, -2, -4), radius=0.75, material=marble))
 rtx.scene.append( AABB(position=(-3.5, 3, -5), size=(2, 5, 5), material=machine))
 rtx.scene.append( Triangle(v0=(3,3,-15), v1=(-5, 2, -7) , v2=(-2, 5, -10), t= None, material = mirror) )
 rtx.scene.append( Disk(position=(3, -5, -10), radius=3, normal=(0,1,0), material=grass))
-rtx.scene.append( Disk(position=(-3, -5, -10), radius=3, normal=(0,1,0), material=brick))
+rtx.scene.append( Disk(position=(-3, -5, -10), radius=3, normal=(0,1,0), material=zero))
 
 
 rtx.glRender()
